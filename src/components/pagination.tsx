@@ -47,7 +47,7 @@ const Pagination = ({
 
   return (
     <nav className="mt-8">
-      <ul className="flex justify-center space-x-2">
+      <ul className="flex flex-wrap justify-center gap-2">
         {pageNumbers.map((number) => (
           <li key={number}>
             <button
