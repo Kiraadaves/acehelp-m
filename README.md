@@ -3,6 +3,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 View project live here [acehelp-m](https://acehelp-m.vercel.app/)
 
+## Features
+
+Responsive
+API integration
+Animation
+Search feature
+Pagination
+Keyboard event for pagination
+
 ## Available Scripts
 
 In the project directory, you can run:
