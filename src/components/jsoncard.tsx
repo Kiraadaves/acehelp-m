@@ -8,9 +8,10 @@ export interface PostsProps {
 
 interface JsonCardProps {
   post: PostsProps;
+  openModal: (post: PostsProps) => void;
 }
 
-const JsonCard = ({ post }: JsonCardProps) => {
+const JsonCard = ({ post, openModal }: JsonCardProps) => {
   return (
     <div className="bg-white shadow-lg  rounded-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
       <div className="p-6 space-y-4">
@@ -25,7 +26,12 @@ const JsonCard = ({ post }: JsonCardProps) => {
             : `${post.body.slice(0, 150)}...`}
         </p>
         <div>
-          <button className="bg-[#B771E5] text-white p-2 rounded-md">Read more</button>
+          <button
+            onClick={() => openModal(post)}
+            className="bg-[#B771E5] text-white p-2 rounded-md"
+          >
+            Read more
+          </button>
         </div>
       </div>
     </div>
