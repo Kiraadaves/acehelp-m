@@ -114,7 +114,7 @@ const Posts = () => {
         />
       )}
       <footer className="bg-[#B771E5] space-y-2 text-white text-center py-4 mt-auto">
-        <p>copyright Chinwe Nwankwo </p>
+        <p>&copy; {new Date().getFullYear()} Chinwe Nwankwo </p>
         <div className="flex justify-center gap-6">
           <a href="https://github.com/Kiraadaves">
             <svg
