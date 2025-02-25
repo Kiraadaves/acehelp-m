@@ -13,7 +13,7 @@ interface JsonCardProps {
 
 const JsonCard = ({ post, openModal }: JsonCardProps) => {
   return (
-    <div className="bg-white shadow-lg  rounded-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
+    <div className="animate__animated animate__slideInUp bg-white shadow-lg pb-6 flex flex-col gap-4 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
       <div className="p-6 space-y-4">
         <h2 className="text-xl font-semibold mb-2 text-gray-800">
           {post.title.length < 30
@@ -25,14 +25,14 @@ const JsonCard = ({ post, openModal }: JsonCardProps) => {
             ? `${post.body}`
             : `${post.body.slice(0, 150)}...`}
         </p>
-        <div>
-          <button
-            onClick={() => openModal(post)}
-            className="bg-[#B771E5] text-white p-2 rounded-md"
-          >
-            Read more
-          </button>
-        </div>
+      </div>
+      <div className="mt-auto">
+        <button
+          onClick={() => openModal(post)}
+          className="bg-[#B771E5] text-white p-2 rounded-md"
+        >
+          Read more
+        </button>
       </div>
     </div>
   );

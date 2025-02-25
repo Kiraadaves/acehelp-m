@@ -4,6 +4,7 @@ import JsonCard from "./jsoncard";
 import Pagination from "./pagination";
 import axios from "axios";
 import Modal from "./modal";
+import debounce from "lodash.debounce";
 interface PostsProps {
   id: number;
   title: string;
@@ -30,7 +31,7 @@ const Posts = () => {
         console.error("Error fetching posts:", error);
         setIsLoading(false);
       });
-  });
+  }, []);
 
   const filteredCards = useMemo(() => {
     return cards.filter(
@@ -46,11 +47,10 @@ const Posts = () => {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  const onSearch = (term: string) => {
-    //console.log(term);
+  const onSearch = debounce((term: string) => {
     setSearchTerm(term);
     setCurrentPage(1);
-  };
+  }, 200);
   const openModal = (post: PostsProps) => {
     setSelectedPost(post);
     setIsModalOpen(true);
@@ -71,10 +71,10 @@ const Posts = () => {
         </div>
       ) : (
         <main className="mx-8">
-          <h1 className="text-[#B771E5] text-center text-2xl md:text-4xl font-bold">
-            View our Posts!
+          <h1 className=" text-[#B771E5] text-center text-2xl md:text-4xl font-bold">
+            View Cards!
           </h1>
-          <div className="bg-[#b771e531] p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 text-center">
+          <div className="bg-[#b771e531] p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 text-center">
             {currentCards.map((card) => (
               <JsonCard key={card.id} post={card} openModal={openModal} />
             ))}
