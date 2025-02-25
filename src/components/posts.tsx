@@ -92,7 +92,7 @@ const Posts = () => {
                   className="w-80 h-80 rounded-lg"
                 />
                 <p className="text-center text-[#B771E5] font-bold mt-8">
-                  No posts found matching "{searchTerm}"
+                  No cards found matching "{searchTerm}"
                 </p>
               </div>
             )}

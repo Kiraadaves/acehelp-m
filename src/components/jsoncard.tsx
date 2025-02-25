@@ -15,7 +15,7 @@ const JsonCard = ({ post, openModal }: JsonCardProps) => {
   return (
     <div className="animate__animated animate__slideInUp bg-white shadow-lg pb-6 flex flex-col gap-4 rounded-lg overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
       <div className="p-6 space-y-4">
-        <h2 className="text-xl font-semibold mb-2 text-gray-800">
+        <h2 className="text-xl font-semibold mb-2 text-[#B771E5]">
           {post.title.length < 30
             ? `${post.title}`
             : `${post.title.slice(0, 30)}...`}
