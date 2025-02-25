@@ -116,7 +116,7 @@ const Posts = () => {
       <footer className="bg-[#B771E5] space-y-2 text-white text-center py-4 mt-auto">
         <p>copyright Chinwe Nwankwo </p>
         <div className="flex justify-center gap-6">
-          <a href="https://github.com">
+          <a href="https://github.com/Kiraadaves">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -133,7 +133,7 @@ const Posts = () => {
               <path d="M9 18c-4.51 2-5-2-7-2" />
             </svg>
           </a>
-          <a href="https://github.com">
+          <a href="https://x.com/CKiraadaves">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -149,7 +149,7 @@ const Posts = () => {
               <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
             </svg>
           </a>
-          <a href="https://github.com">
+          <a href="https://www.linkedin.com/in/chinwe-chukwuogor-400404118/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
