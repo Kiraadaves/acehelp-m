@@ -112,7 +112,6 @@ const Posts = () => {
           id={selectedPost.id}
           title={selectedPost.title}
           body={selectedPost.body}
-          modalOpen={isModalOpen}
         />
       )}
       <footer className="bg-[#B771E5] space-y-2 text-white text-center py-4 mt-auto">
