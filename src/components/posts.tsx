@@ -89,6 +89,7 @@ const Posts = () => {
                 <img
                   src="/notfound.png"
                   alt="not-found"
+                  loading="lazy"
                   className="w-80 h-80 rounded-lg"
                 />
                 <p className="text-center text-[#B771E5] font-bold mt-8">
