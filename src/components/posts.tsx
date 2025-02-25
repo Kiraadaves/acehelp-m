@@ -3,7 +3,6 @@ import NavBar from "./nav";
 import JsonCard from "./jsoncard";
 import Pagination from "./pagination";
 import axios from "axios";
-import { debounce } from "lodash";
 interface PostsProps {
   id: number;
   title: string;
@@ -14,6 +13,7 @@ const Posts = () => {
   const [cards, setCards] = useState<PostsProps[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 12;
 
   useEffect(() => {
     axios
@@ -30,24 +30,35 @@ const Posts = () => {
     );
   }, [cards, searchTerm]);
 
-  const onSearch = debounce((term: string) => {
-    console.log(term);
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const onSearch = (term: string) => {
+    //console.log(term);
     setSearchTerm(term);
     setCurrentPage(1);
-  });
+  };
   return (
-    <div className="min-h-screen flex flex-col gap-8 md:gap-16">
+    <div className="min-h-screen  flex flex-col gap-8 md:gap-16">
       <NavBar onSearch={onSearch} />
-      <main>
+      <main className="mx-8">
         <h1 className="text-[#B771E5] text-center text-2xl md:text-4xl font-bold">
           View our Posts!
         </h1>
         <div className="bg-[#b771e531] p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 text-center">
-          {cards.map((card) => (
+          {currentCards.map((card) => (
             <JsonCard key={card.id} post={card} />
           ))}
         </div>
-        <Pagination />
+        <Pagination
+          postsPerPage={cardsPerPage}
+          totalPosts={filteredCards.length}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
       </main>
 
       <footer className="bg-[#B771E5] text-white text-center py-4 mt-auto">

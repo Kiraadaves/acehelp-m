@@ -10,8 +10,8 @@ const NavBar = ({ onSearch }: SearchBarProps) => {
   };
   return (
     <div>
-      <header className="flex flex-col md:flex-row  md:justify-between px-8 py-8 shadow-md">
-        <h1 className="text-[#B771E5] text-2xl md:text-4xl font-bold">
+      <header className="flex flex-col md:flex-row gap-6 md:gap-0 md:justify-between px-8 py-8 shadow-md">
+        <h1 className="text-[#B771E5] text-center md:text-left text-2xl md:text-4xl font-bold">
           Chinwe Nwankwo
         </h1>
         <div className="mb-6">
