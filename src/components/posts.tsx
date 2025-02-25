@@ -71,7 +71,7 @@ const Posts = () => {
         </div>
       ) : (
         <main className="mx-8">
-          <h1 className=" text-[#B771E5] text-center text-2xl md:text-4xl font-bold">
+          <h1 className="animate__animated animate__fadeInRight text-[#B771E5] text-center text-2xl md:text-4xl font-bold">
             View Cards!
           </h1>
           <div
