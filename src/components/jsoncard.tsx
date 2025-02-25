@@ -21,9 +21,9 @@ const JsonCard = ({ post, openModal }: JsonCardProps) => {
             : `${post.title.slice(0, 30)}...`}
         </h2>
         <p className="text-gray-600">
-          {post.body.length < 150
+          {post.body.length < 100
             ? `${post.body}`
-            : `${post.body.slice(0, 150)}...`}
+            : `${post.body.slice(0, 100)}...`}
         </p>
       </div>
       <div className="mt-auto">
