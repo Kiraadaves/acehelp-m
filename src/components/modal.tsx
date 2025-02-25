@@ -5,12 +5,17 @@ interface ModalProps {
   id: number;
   title: string;
   body: string;
+  modalOpen: boolean;
 }
 
-const Modal = ({ onClose, id, title, body }: ModalProps) => {
+const Modal = ({ onClose, id, modalOpen, title, body }: ModalProps) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-8 md:p-0">
-      <div className="animate__animated animate__slideInDown bg-white space-y-4 w-full max-w-lg px-6 pt-6 pb-12 rounded shadow-md">
+      <div
+        className={`animate__animated  ${
+          modalOpen ? "animate__slideInDown" : "animate__slideOutUp"
+        } bg-white space-y-4 w-full max-w-lg px-6 pt-6 pb-12 rounded shadow-md`}
+      >
         <div className="flex justify-end">
           {" "}
           <button

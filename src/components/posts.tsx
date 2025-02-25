@@ -5,6 +5,8 @@ import Pagination from "./pagination";
 import axios from "axios";
 import Modal from "./modal";
 import debounce from "lodash.debounce";
+import Error from "./notification/error";
+import IsLoading from "./notification/isLoading";
 interface PostsProps {
   id: number;
   title: string;
@@ -17,6 +19,7 @@ const Posts = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [selectedPost, setSelectedPost] = useState<PostsProps | null>(null);
   const cardsPerPage = 12;
 
@@ -30,6 +33,7 @@ const Posts = () => {
       .catch((error) => {
         console.error("Error fetching posts:", error);
         setIsLoading(false);
+        setError("Network error. Please reload and try again.");
       });
   }, []);
 
@@ -63,13 +67,8 @@ const Posts = () => {
   return (
     <div className="min-h-screen  flex flex-col gap-8 md:gap-12">
       <NavBar onSearch={onSearch} />
-      {isLoading ? (
-        <div className="min-h-screen flex items-center justify-center">
-          <p className="text-[#B771E5] text-3xl text-center">
-            Fetching cards, please wait...
-          </p>
-        </div>
-      ) : (
+      {isLoading && <IsLoading />}{" "}
+      {!isLoading && !error && (
         <main className="mx-8">
           <h1 className="animate__animated animate__fadeInRight text-[#B771E5] text-center text-2xl md:text-4xl font-bold">
             View Cards!
@@ -85,7 +84,7 @@ const Posts = () => {
               <JsonCard key={card.id} post={card} openModal={openModal} />
             ))}
             {filteredCards.length === 0 && searchTerm !== "" && (
-              <div className="flex flex-col justify-center items-center">
+              <div className="flex flex-col justify-center items-center p-4">
                 <img
                   src="/notfound.png"
                   alt="not-found"
@@ -106,12 +105,14 @@ const Posts = () => {
           />
         </main>
       )}
+      {!isLoading && error && <Error error={error} />}
       {isModalOpen && selectedPost && (
         <Modal
           onClose={closeModal}
           id={selectedPost.id}
           title={selectedPost.title}
           body={selectedPost.body}
+          modalOpen={isModalOpen}
         />
       )}
       <footer className="bg-[#B771E5] space-y-2 text-white text-center py-4 mt-auto">
